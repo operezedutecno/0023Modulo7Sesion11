@@ -1,0 +1,25 @@
+{
+  "name": "0023modulo7sesion11",
+  "version": "1.0.0",
+  "description": "Práctica Sequelize BelongsToMany (Muchos a Muchos)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/operezedutecno/0023Modulo7Sesion11.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/operezedutecno/0023Modulo7Sesion11/issues"
+  },
+  "homepage": "https://github.com/operezedutecno/0023Modulo7Sesion11#readme",
+  "dependencies": {
+    "pg": "^8.11.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.32.1"
+  }
+}

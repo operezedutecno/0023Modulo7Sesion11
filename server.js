@@ -10,9 +10,24 @@ const main = async() => {
     // const participante4 = await controller.crearParticipante({ rut: "44.444.444-4", nombre: "Pablo"})
 
     // Registro de Cursos
-    const curso1 = await controller.crearCurso({ nombre: "Javascript"})
-    const curso2 = await controller.crearCurso({ nombre: "Python"})
-    const curso3 = await controller.crearCurso({ nombre: "Java"})
+    // const curso1 = await controller.crearCurso({ nombre: "Javascript"})
+    // const curso2 = await controller.crearCurso({ nombre: "Python"})
+    // const curso3 = await controller.crearCurso({ nombre: "Java"})
+
+    // Asociar Participantes a cursos
+    await controller.agregarParticipante(1,1)
+    await controller.agregarParticipante(1,4)
+    await controller.agregarParticipante(2,3)
+    await controller.agregarParticipante(3,1)
+    await controller.agregarParticipante(3,2)
+    await controller.agregarParticipante(3,3)
+
+
+    const infoCurso = await controller.consultarCurso(1)
+    console.log("InfoCurso", JSON.stringify(infoCurso, null,4));
+
+    const infoParticipante = await controller.consultarParticipante(4)
+    console.log("InfoParticipante", JSON.stringify(infoParticipante, null, 4));
     
     console.log("Ejecución exitosa");
 }

@@ -23,3 +23,51 @@ exports.crearCurso = async (curso) => {
         return null
     }
 }
+
+exports.agregarParticipante = async (idCurso, idParticipante) => {
+    const curso = await Curso.findByPk(idCurso)
+    if(!curso) { // Validación para verificar existencia del curso
+        console.log("Curso no encontrado "+idCurso);
+        return null
+    }
+    const participante = await Participante.findByPk(idParticipante)
+    if(!participante) { //Validación para verificar la existencia del participante
+        console.log("Participante no encontrado "+idParticipante);
+        return null
+    }
+    await curso.addParticipante(participante)
+    console.log(`Participante ${idParticipante} agregado al curso ${idCurso}`);
+    return curso;
+}
+
+exports.consultarCurso = async (idCurso) => {
+    const curso = await Curso.findByPk(idCurso, {
+        include: [
+            {
+                model: Participante,
+                as: "participantes",
+                attributes: [ "id","rut","nombre"],
+                through: {
+                    attributes: ["curso_id","participante_id"]
+                }
+            }
+        ]
+    })
+    return curso
+}
+
+exports.consultarParticipante = async (idParticipante) => {
+    const participante = await Participante.findByPk(idParticipante, {
+        include: [
+            {
+                model: Curso,
+                as: "cursos",
+                attributes: [ "id","nombre"],
+                through: {
+                    attributes: ["curso_id","participante_id"]
+                }
+            }
+        ]
+    })
+    return participante
+}
